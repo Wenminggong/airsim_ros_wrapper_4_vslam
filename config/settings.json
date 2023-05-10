@@ -1,0 +1,120 @@
+{
+  "ClockSpeed": 1,
+  "SeeDocsAt": "https://github.com/Microsoft/AirSim/blob/master/docs/settings.md",
+  "SettingsVersion": 1.2,
+  "SimMode": "Multirotor",
+  "ViewMode": "NoDisplay",
+  "Vehicles": {
+    "Drone_1": {
+      "VehicleType": "SimpleFlight",
+      "Sensors": {
+        "imu_1": {
+          "SensorType": 2,
+          "Enabled": true
+        },
+        "Distance1": {
+          "SensorType": 5,
+          "Enabled": true,
+          "DrawDebugPoints": true,
+	        "Yaw": 0,
+          "MaxDistance": 60
+        },
+	      "Distance2": {
+          "SensorType": 5,
+          "Enabled": true,
+          "DrawDebugPoints": true,
+	        "Yaw": 45,
+          "MaxDistance": 60
+        },
+	      "Distance3": {
+          "SensorType": 5,
+          "Enabled": true,
+          "DrawDebugPoints": true,
+	        "Yaw": -45,
+          "MaxDistance": 60
+        },
+	      "Distance4": {
+          "SensorType": 5,
+          "Enabled": true,
+          "DrawDebugPoints": true,
+	        "Yaw": 25,
+          "MaxDistance": 60
+        },
+	      "Distance5": {
+          "SensorType": 5,
+          "Enabled": true,
+          "DrawDebugPoints": true,
+	        "Yaw": -25,
+          "MaxDistance": 60
+        },
+	      "Distance6": {
+          "SensorType": 5,
+          "Enabled": true,
+          "DrawDebugPoints": true,
+	        "Yaw": 65,
+          "MaxDistance": 60
+        },
+	      "Distance7": {
+          "SensorType": 5,
+          "Enabled": true,
+          "DrawDebugPoints": true,
+	        "Yaw": -65,
+          "MaxDistance": 60
+        },
+	      "Distance8": {
+          "SensorType": 5,
+          "Enabled": true,
+          "DrawDebugPoints": true,
+	        "Yaw": 15,
+          "MaxDistance": 60
+        },
+	      "Distance9": {
+          "SensorType": 5,
+          "Enabled": true,
+          "DrawDebugPoints": true,
+	        "Yaw": -15,
+          "MaxDistance": 60
+        }
+      },
+      "AllowAPIAlways": true,
+      "Cameras": {
+        "leftcamera_1": {
+          "CaptureSettings": [
+            {
+              "ImageType": 0,
+              "Width": 640,
+              "Height": 480,
+              "FOV_Degrees": 90,
+              "TargetGamma": 1.5
+            }
+          ],
+          "X": 0.35, "Y": -0.05, "Z": -0.1,
+          "Pitch": -20, "Roll": 0, "Yaw": 0
+        },
+        "rightcamera_1": {
+          "CaptureSettings": [
+            {
+              "ImageType": 0,
+              "Width": 640,
+              "Height": 480,
+              "FOV_Degrees": 90,
+              "TargetGamma": 1.5
+            }
+          ],
+          "X": 0.35, "Y": 0.05, "Z": -0.1,
+          "Pitch": -20, "Roll": 0, "Yaw": 0
+        }
+      },
+      "X": 0, "Y": 0, "Z": 0,
+      "Pitch": 0, "Roll": 0, "Yaw": 0
+    }
+  },  
+  "SubWindows": [
+    {"WindowID": 0, "ImageType": 0, "CameraName": "leftcamera_1", "Visible": true},
+    {"WindowID": 2, "ImageType": 0, "CameraName": "rightcamera_1", "Visible": true}
+  ],
+  "CameraDirector": {
+    "FollowDistance": -0.5,
+    "X":-0.5, "Y":0, "Z": -0.5
+  }
+}
