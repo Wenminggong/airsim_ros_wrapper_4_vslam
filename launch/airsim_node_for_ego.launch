@@ -1,0 +1,44 @@
+<launch>
+	<arg name="output" default="log"/>
+	<arg name="publish_clock" default="false"/>
+	<arg name="is_vulkan" default="true"/>
+	<arg name="host" default="localhost" />
+
+	<include file="$(find airsim_ros_pkgs)/launch/single_agent_run.launch">
+		<arg name="output" value="$(arg output)"/>
+		<arg name="publish_clock" value="$(arg publish_clock)"/>
+		<arg name="is_vulkan" value="$(arg is_vulkan)"/>
+		<arg name="host" value="$(arg host)"/>
+		<arg name="vehicle_name" value="drone_0"/>
+	</include>
+
+	<include file="$(find airsim_ros_pkgs)/launch/single_agent_run.launch">
+		<arg name="output" value="$(arg output)"/>
+		<arg name="publish_clock" value="$(arg publish_clock)"/>
+		<arg name="is_vulkan" value="$(arg is_vulkan)"/>
+		<arg name="host" value="$(arg host)"/>
+		<arg name="vehicle_name" value="drone_1"/>
+	</include>
+
+	<include file="$(find airsim_ros_pkgs)/launch/single_agent_run.launch">
+		<arg name="output" value="$(arg output)"/>
+		<arg name="publish_clock" value="$(arg publish_clock)"/>
+		<arg name="is_vulkan" value="$(arg is_vulkan)"/>
+		<arg name="host" value="$(arg host)"/>
+		<arg name="vehicle_name" value="drone_2"/>
+	</include>
+
+	<include file="$(find airsim_ros_pkgs)/launch/single_agent_run.launch">
+		<arg name="output" value="$(arg output)"/>
+		<arg name="publish_clock" value="$(arg publish_clock)"/>
+		<arg name="is_vulkan" value="$(arg is_vulkan)"/>
+		<arg name="host" value="$(arg host)"/>
+		<arg name="vehicle_name" value="drone_3"/>
+	</include>
+
+	<!-- Static transforms -->
+	<include file="$(find airsim_ros_pkgs)/launch/static_transforms.launch"/>
+
+	<!-- depth_image to point2d
+	<include file="$(find airsim_ros_pkgs)/launch/depthimage_to_point2d.launch"/> -->
+</launch>

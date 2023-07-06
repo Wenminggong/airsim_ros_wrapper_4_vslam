@@ -1,0 +1,30 @@
+<launch>
+	<arg name="output" default="log"/>
+	<arg name="publish_clock" default="false"/>
+	<arg name="is_vulkan" default="true"/>
+	<arg name="host" default="localhost" />
+	<arg name="vehicle_name" default="drone_0"/>
+
+	<node name="$(arg vehicle_name)_airsim_node" pkg="airsim_ros_pkgs" type="single_agent_airsim_node" output="$(arg output)">
+		<param name="current_vehicle_name" value="$(arg vehicle_name)" type="string"/>
+		<param name="is_vulkan" type="bool" value="false" /> 
+		<!-- ROS timer rates. Note that timer callback will be processed at maximum possible rate, upperbounded by the following ROS params -->
+		<param name="update_airsim_img_response_every_n_sec" type="double" value="0.04" /> 
+		<param name="update_airsim_depth_img_response_every_n_sec" type="double" value="0.1" /> 
+		<param name="update_airsim_control_every_n_sec" type="double" value="0.005" />
+		<param name="update_airsim_command_every_n_sec" type="double" value="0.007"/>
+		<param name="update_lidar_every_n_sec" type="double" value="0.01" />
+		<param name="publish_clock" type="bool" value="$(arg publish_clock)" />
+		<param name="host_ip" type="string" value="$(arg host)" />
+		<param name="ground_truth_path" type="string" value="/mnt/d/uavs/vslam/results/ego_swarm"/>
+		<!-- <remap from="/airsim_node/drone_0/left_camera/Scene" to="/camera/left/image_raw" />
+		<remap from="/airsim_node/drone_0/right_camera/Scene" to="/camera/right/image_raw" />
+		<remap from="/airsim_node/drone_0/imu/imu_1" to="/imu" /> -->
+		<!-- <remap from="/airsim_node/Drone_1/depth_camera/DepthPlanar/camera_info" to="camera_info"/> -->
+		<remap from="/$(arg vehicle_name)_airsim_node/$(arg vehicle_name)/$(arg vehicle_name)_depth_camera/DepthPerspective/camera_info" to="/$(arg vehicle_name)/camera_info"/>
+        <!-- <remap from="/airsim_node/Drone_1/depth_camera/DepthPlanar" to="image_rect"/> -->
+		<remap from="/$(arg vehicle_name)_airsim_node/$(arg vehicle_name)/$(arg vehicle_name)_depth_camera/DepthPerspective" to="/$(arg vehicle_name)/image_raw"/>
+		<!-- remap odom -->
+		<remap from="/$(arg vehicle_name)_airsim_node/$(arg vehicle_name)/odom_local_ned" to="/$(arg vehicle_name)/odom_airsim"/>
+	</node>
+</launch>

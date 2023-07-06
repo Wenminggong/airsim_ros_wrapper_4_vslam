@@ -1,0 +1,10 @@
+<launch>
+<!-- depth_image to pointcloud2, in camera_optical frame, x:right, y:down, z: front -->
+    <node pkg="nodelet" type="nodelet" name="nodelet_pcl_manager" args="manager" />
+    <node pkg="nodelet" type="nodelet" name="rgbd_pcl" args="load depth_image_proc/point_cloud_xyz_radial nodelet_pcl_manager" >
+        <!-- <remap from="camera_info" to="/airsim_node/Drone_1/depth_camera/DepthPlanar/camera_info"/> -->
+        <!-- <remap from="image_rect" to="/airsim_node/Drone_1/depth_camera/DepthPlanar" /> -->
+        <remap from="points" to="/cloud_airsim"/>
+        <param name="queue_size" value="5" /> 
+    </node>
+</launch>

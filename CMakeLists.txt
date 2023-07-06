@@ -110,9 +110,17 @@ target_link_libraries(airsim_node airsim_ros ${catkin_LIBRARIES} AirLib)
 add_executable(pd_position_controller_simple_node src/pd_position_controller_simple_node.cpp)
 target_link_libraries(pd_position_controller_simple_node pd_position_controller_simple airsim_ros ${catkin_LIBRARIES} AirLib)
 
+add_library(single_agent_airsim_ros src/single_agent_airsim_ros_wrapper.cpp)
+add_dependencies(single_agent_airsim_ros ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(single_agent_airsim_ros ${catkin_LIBRARIES} ${OpenCV_LIBS} yaml-cpp AirLib airsim_settings_parser)
+
+add_executable(single_agent_airsim_node src/single_agent_airsim_node.cpp)
+target_link_libraries(single_agent_airsim_node single_agent_airsim_ros ${catkin_LIBRARIES} AirLib)
+
 install(TARGETS
     #list of nodes
     airsim_node
+    single_agent_airsim_node
     pd_position_controller_simple_node
     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
@@ -120,6 +128,7 @@ install(TARGETS
 install(TARGETS 
     #list of shared libraries
     airsim_ros
+    single_agent_airsim_ros
     pd_position_controller_simple
     ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
     LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
